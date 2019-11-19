@@ -1,0 +1,48 @@
+From 3f8364b41207d8c26d3d3be518a7d9ebf4243b92 Mon Sep 17 00:00:00 2001
+From: Kamil Dudka <kdudka@redhat.com>
+Date: Fri, 9 Feb 2018 18:01:57 +0100
+Subject: [PATCH] tests: make them compile on i686
+
+---
+ tests/test-pseudotcp-fuzzy.c | 4 ++--
+ tests/test-pseudotcp.c       | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test-pseudotcp-fuzzy.c b/tests/test-pseudotcp-fuzzy.c
+index 4a714e6..030c03f 100644
+--- a/tests/test-pseudotcp-fuzzy.c
++++ b/tests/test-pseudotcp-fuzzy.c
+@@ -129,7 +129,7 @@ write_to_sock (PseudoTcpSocket *sock)
+       total += wlen;
+       total_read += wlen;
+       if (wlen < (gint) len) {
+-        g_debug ("seeking  %ld from %lu", wlen - len, ftell (in));
++        g_debug ("seeking  %ld from %lu", (long) wlen - len, ftell (in));
+         fseek (in, wlen - len, SEEK_CUR);
+         g_assert (!feof (in));
+         g_debug ("Socket queue full after %d bytes written", total);
+@@ -355,7 +355,7 @@ static void adjust_clock (PseudoTcpSocket *sock)
+ 
+   if (pseudo_tcp_socket_get_next_clock (sock, &timeout)) {
+     timeout -= g_get_monotonic_time () / 1000;
+-    g_debug ("Socket %p: Adjusting clock to %ld ms", sock, timeout);
++    g_debug ("Socket %p: Adjusting clock to %ld ms", sock, (long) timeout);
+     if (sock == left) {
+       if (left_clock != 0)
+          g_source_remove (left_clock);
+diff --git a/tests/test-pseudotcp.c b/tests/test-pseudotcp.c
+index 1a8391a..584a0d0 100644
+--- a/tests/test-pseudotcp.c
++++ b/tests/test-pseudotcp.c
+@@ -81,7 +81,7 @@ static void write_to_sock (PseudoTcpSocket *sock)
+       total += wlen;
+       total_read += wlen;
+       if (wlen < (gint) len) {
+-        g_debug ("seeking  %ld from %lu", wlen - len, ftell (in));
++        g_debug ("seeking  %ld from %lu", (long) wlen - len, ftell (in));
+         fseek (in, wlen - len, SEEK_CUR);
+         g_assert (!feof (in));
+         g_debug ("Socket queue full after %d bytes written", total);
+-- 
+2.13.6
+
