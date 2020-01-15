@@ -1,6 +1,6 @@
 Name:           libnice
 Version:        0.1.14
-Release:        9
+Release:        10 
 Summary:        An implementation of ICE standard
 License:        LGPLv2 and MPLv1.1
 URL:            https://nice.freedesktop.org/wiki/
@@ -12,7 +12,7 @@ Patch0004:      libnice-0.1.14-turn-verify.patch
 
 BuildRequires:  autoconf automake glib2-devel gnutls-devel >= 2.12.0
 BuildRequires:  gobject-introspection-devel gstreamer1-devel >= 0.11.91
-BuildRequires:  gstreamer1-plugins-base-devel >= 0.11.91 gupnp-igd-devel >= 0.1.2
+BuildRequires:  gstreamer1-plugins-base-devel >= 0.11.91
 
 %description
 Libnice is an implementation of the IETF's Interactive Connectivity
@@ -77,5 +77,11 @@ make check
 %{_datadir}/{gtk-doc/html/libnice/,gir-1.0/Nice-0.1.gir}
 
 %changelog
+* Wed Jan 15 2020 openEuler Buildteam <buildteam@openeuler.org> - 0.1.14-10
+- Type:enhancement
+- Id:NA
+- SUG:NA
+- DESC:optimization the spec
+
 * Fri Oct 25 2019 yanzhihua <yanzhihua4@huawei.com> - 0.1.14-9
 - Package init
