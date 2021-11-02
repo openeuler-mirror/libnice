@@ -1,6 +1,6 @@
 Name:           libnice
 Version:        0.1.14
-Release:        10 
+Release:        11 
 Summary:        An implementation of ICE standard
 License:        LGPLv2 and MPLv1.1
 URL:            https://nice.freedesktop.org/wiki/
@@ -54,10 +54,8 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 %delete_la
 
 %check
-%ifarch x86_64 %{ix86}
 export LD_LIBRARY_PATH="$PWD/nice/.libs"
 make check
-%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -77,6 +75,12 @@ make check
 %{_datadir}/{gtk-doc/html/libnice/,gir-1.0/Nice-0.1.gir}
 
 %changelog
+* Tue Nov 1 2021 Chenxi Mao <chenxi.mao@suse.com> - 0.1.14-11
+- Type:enhancement
+- Id:NA
+- SUG:NA
+- DESC: Do check on X86 and ARM64
+
 * Wed Jan 15 2020 openEuler Buildteam <buildteam@openeuler.org> - 0.1.14-10
 - Type:enhancement
 - Id:NA
