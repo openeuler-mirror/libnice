@@ -1,6 +1,6 @@
 Name:           libnice
 Version:        0.1.14
-Release:        11 
+Release:        12
 Summary:        An implementation of ICE standard
 License:        LGPLv2 and MPLv1.1
 URL:            https://nice.freedesktop.org/wiki/
@@ -13,6 +13,7 @@ Patch0004:      libnice-0.1.14-turn-verify.patch
 BuildRequires:  autoconf automake glib2-devel gnutls-devel >= 2.12.0
 BuildRequires:  gobject-introspection-devel gstreamer1-devel >= 0.11.91
 BuildRequires:  gstreamer1-plugins-base-devel >= 0.11.91
+BuildRequires:  gtk-doc
 
 %description
 Libnice is an implementation of the IETF's Interactive Connectivity
@@ -75,6 +76,9 @@ make check
 %{_datadir}/{gtk-doc/html/libnice/,gir-1.0/Nice-0.1.gir}
 
 %changelog
+* Fri Jan 07 2022 wulei <wulei80@huawei.com> - 0.1.14-12
+- Repair failed to execute "gtkdocize"
+
 * Tue Nov 1 2021 Chenxi Mao <chenxi.mao@suse.com> - 0.1.14-11
 - Type:enhancement
 - Id:NA
